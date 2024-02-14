@@ -1,6 +1,5 @@
 package me.gamingoninsulin.slimefood.managers;
 
-import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -8,22 +7,30 @@ import me.gamingoninsulin.slimefood.food.SFSlimyCake;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Objects;
+
 public class SFRecipeManager {
-    private final SlimefunAddon addon;
     private final ItemGroup itemGroup;
     private final SFItemManager itemManager;
 
 
-    public SFRecipeManager(SlimefunAddon addon, ItemGroup itemGroup) {
-        this.addon = addon;
+    public SFRecipeManager(ItemGroup itemGroup, SFItemManager itemManager) {
         this.itemGroup = itemGroup;
-        this.itemManager = new SFItemManager(addon, itemGroup);
+        this.itemManager = itemManager;
     }
 
     public void registerSFSlimyCake() {
-        // Create and register the slimy cake item and its recipe
-        SlimefunItemStack slimeCake = itemManager.createAndRegisterItem("SLIME_CAKE", Material.CAKE, "§2Slimy Cake", itemGroup, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-                // ... existing code ...
-        });
+        SFSlimyCake sfSlimyCake = new SFSlimyCake(itemGroup);
+        SlimefunItemStack slimeCake = sfSlimyCake.getSlimeCake();
+
+        ItemStack[] recipe = {
+                new ItemStack(Material.SLIME_BALL), new ItemStack(Material.SLIME_BALL), new ItemStack(Material.SLIME_BALL),
+                new ItemStack(Material.SUGAR), new ItemStack(Material.EGG), new ItemStack(Material.SUGAR),
+                new ItemStack(Material.WHEAT), new ItemStack(Material.WHEAT), new ItemStack(Material.WHEAT)
+        };
+
+        // Register the slimy cake item
+        itemManager.createAndRegisterItem(slimeCake.getItemId(), slimeCake.getType(), Objects.requireNonNull(slimeCake.getItemMeta()).getDisplayName(),
+                RecipeType.ENHANCED_CRAFTING_TABLE, recipe, "&7&oRestores &b&o" + "6.0" + " &7&oHunger");
     }
 }

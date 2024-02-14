@@ -10,15 +10,17 @@ import org.bukkit.inventory.ItemStack;
 
 public class SFItemManager {
     private final SlimefunAddon addon;
+    private final ItemGroup itemGroup;
 
     public SFItemManager(SlimefunAddon addon, ItemGroup itemGroup) {
         this.addon = addon;
+        this.itemGroup = itemGroup;
     }
-    public SlimefunItemStack createAndRegisterItem(String id, Material type, String name, ItemGroup itemGroup, RecipeType recipeType, ItemStack[] recipe, String... lore) {
+
+    public void createAndRegisterItem(String id, Material type, String name, RecipeType recipeType, ItemStack[] recipe, String... lore) {
         SlimefunItemStack itemStack = createItem(id, type, name, lore);
         SlimefunItem item = new SlimefunItem(itemGroup, itemStack, recipeType, recipe);
         registerItem(item);
-        return itemStack;
     }
 
     void registerItem(SlimefunItem item) {
