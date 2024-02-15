@@ -2,7 +2,6 @@ package me.gamingoninsulin.slimefood.multiblocks;
 
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
-import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
 
@@ -21,9 +20,8 @@ public class SFBrickOven extends MultiBlockMachine implements RecipeDisplayItem 
 
     private final ItemStack[] recipe;
 
-    public SFBrickOven(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        // You might need to replace BlockFace.NORTH with the correct BlockFace
-        super(itemGroup, item, getMultiBlockPattern(), recipe, BlockFace.NORTH);
+    public SFBrickOven(ItemGroup itemGroup, SlimefunItemStack item, ItemStack[] multiblock, ItemStack[] recipe) {
+        super(itemGroup, item, multiblock, recipe, BlockFace.NORTH);
         this.recipe = recipe;
     }
 

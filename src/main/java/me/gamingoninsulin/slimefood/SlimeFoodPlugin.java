@@ -1,9 +1,11 @@
 package me.gamingoninsulin.slimefood;
 
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import me.gamingoninsulin.slimefood.managers.SFItemManager;
 import me.gamingoninsulin.slimefood.managers.SFRecipeManager;
 import me.gamingoninsulin.slimefood.managers.SFResearchManager;
+import me.gamingoninsulin.slimefood.multiblocks.SFBrickOven;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -15,9 +17,12 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 
 public class SlimeFoodPlugin extends JavaPlugin implements SlimefunAddon {
 
+    // Declare an instance of SFBrickOven
+    private SFBrickOven sfBrickOven;
+
+
     @Override
     public void onEnable() {
-
         // Create a new ItemGroup
         ItemStack itemGroupItem = new CustomItemStack(Material.CAKE, "&2SlimeFood", "", "&a> Click to open");
         NamespacedKey itemGroupId = new NamespacedKey(this, "sf_slime_food_plugin");
@@ -27,6 +32,12 @@ public class SlimeFoodPlugin extends JavaPlugin implements SlimefunAddon {
         SFRecipeManager recipeManager = new SFRecipeManager(itemGroup, itemManager);
         SFResearchManager researchManager = new SFResearchManager();
         this.registerManager(researchManager);
+
+        // Initialize SFBrickOven
+        SlimefunItemStack item = new SlimefunItemStack("SF_BRICK_OVEN", Material.BRICK, "&cBrick Oven");
+        ItemStack[] multiblock = new ItemStack[]{null, new ItemStack(Material.BRICK), null, null, new ItemStack(Material.FIRE), null, null, new ItemStack(Material.BRICK), null};
+        ItemStack[] recipe = new ItemStack[]{new ItemStack(Material.APPLE), new ItemStack(Material.SUGAR), null, null, null, null, null, null, null};
+        sfBrickOven = new SFBrickOven(itemGroup, item, multiblock, recipe);
 
         // Register the SFSlimyCake item
         recipeManager.registerSFSlimyCake();
@@ -76,4 +87,8 @@ public class SlimeFoodPlugin extends JavaPlugin implements SlimefunAddon {
         return this;
     }
 
+    // Getter for SFBrickOven
+    public SFBrickOven getSFBrickOven() {
+        return sfBrickOven;
+    }
 }
