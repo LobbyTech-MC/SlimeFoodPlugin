@@ -22,7 +22,8 @@ public class SFBrickOven extends MultiBlockMachine implements RecipeDisplayItem 
     private final ItemStack[] recipe;
 
     public SFBrickOven(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(itemGroup, item, getMultiBlockPattern(), recipeType, recipe);
+        // You might need to replace BlockFace.NORTH with the correct BlockFace
+        super(itemGroup, item, getMultiBlockPattern(), recipe, BlockFace.NORTH);
         this.recipe = recipe;
     }
 

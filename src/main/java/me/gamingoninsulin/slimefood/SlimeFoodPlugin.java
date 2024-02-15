@@ -36,6 +36,10 @@ public class SlimeFoodPlugin extends JavaPlugin implements SlimefunAddon {
         // Create the SFBrickOven item
         SlimefunItemStack ovenItem = itemManager.createSFBrickOven();
 
+        // Pass a MinecraftRecipe<?> to the RecipeType constructor
+        // You might need to replace MinecraftRecipe.SMELTING with the correct recipe
+        RecipeType recipeType = new RecipeType(MinecraftRecipe.SMELTING);
+
         // Define the RecipeType for the SFBrickOven
         SlimefunItemStack recipeTypeItem = new SlimefunItemStack("BRICK_OVEN_RECIPE", Material.BRICK, "Brick Oven Recipe", "...");
         RecipeType recipeType = new RecipeType(recipeTypeItem);
