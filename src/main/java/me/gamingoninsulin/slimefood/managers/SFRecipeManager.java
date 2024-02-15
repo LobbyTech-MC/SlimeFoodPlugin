@@ -35,6 +35,11 @@ public class SFRecipeManager {
                 RecipeType.ENHANCED_CRAFTING_TABLE, recipe, "&7&oRestores &b&o" + "6.0" + " &7&oHunger");
     }
 
+    public ItemStack[] getSFBrickOvenRecipe() {
+        // Define your SFBrickOven recipe here
+        return new ItemStack[] { /* Your recipe here */ };
+    }
+
     public void registerSFChocolateApple() {
         SFChocolateApple sfChocolateApple = new SFChocolateApple(itemGroup);
         SlimefunItemStack chocolateApple = sfChocolateApple.getChocolateApple();

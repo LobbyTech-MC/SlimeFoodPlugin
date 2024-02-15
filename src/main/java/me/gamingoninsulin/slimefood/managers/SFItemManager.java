@@ -23,6 +23,11 @@ public class SFItemManager {
         registerItem(item);
     }
 
+    public SlimefunItemStack createSFBrickOven() {
+        // Create your SFBrickOven item here
+        return new SlimefunItemStack("SF_BRICK_OVEN", Material.BRICK, "Brick Oven", "...");
+    }
+
     void registerItem(SlimefunItem item) {
         item.register(addon);
     }
