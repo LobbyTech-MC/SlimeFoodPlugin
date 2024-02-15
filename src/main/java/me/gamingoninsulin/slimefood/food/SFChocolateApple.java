@@ -9,32 +9,33 @@ import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public class SFSlimyCake extends SlimefunItem {
+import javax.management.loading.PrivateClassLoader;
 
-    private final SlimefunItemStack slimeCake;
+public class SFChocolateApple extends SlimefunItem {
+    private final SlimefunItemStack chocolateApple;
 
-    public SFSlimyCake(ItemGroup itemGroup) {
+    public SFChocolateApple(ItemGroup itemGroup) {
         super(itemGroup,
                 new SlimefunItemStack(
-                        "SLIME_CAKE", // This is the ID for your item
-                        Material.CAKE, // This is the material for your item
-                        "&aSlime Cake", // This is the name of your item
+                        "CHOCOLATE_APPLE", // This is the ID for your item
+                        Material.APPLE, // This is the material for your item
+                        "&6Chocolate Apple", // This is the name of your item
                         "", // This is the lore of your item
-                        "&7&oRestores &b&o" + "6.0" + " &7&oHunger" // This is additional lore of your item
+                        "&7&oRestores &b&o" + "8.0" + " &7&oHunger" // This is additional lore of your item
                 ),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
-                        new ItemStack(Material.MILK_BUCKET), new ItemStack(Material.MILK_BUCKET), new ItemStack(Material.MILK_BUCKET),
-                        new ItemStack(Material.SUGAR), new ItemStack(Material.EGG), new ItemStack(Material.SUGAR),
-                        new ItemStack(Material.SLIME_BALL), new ItemStack(Material.SLIME_BALL), new ItemStack(Material.SLIME_BALL)
+                        new ItemStack(Material.COCOA_BEANS), null, new ItemStack(Material.COCOA_BEANS),
+                        null, new ItemStack(Material.APPLE), null,
+                        new ItemStack(Material.COCOA_BEANS), null, new ItemStack(Material.COCOA_BEANS)
                 }
         );
 
-        this.slimeCake = (SlimefunItemStack) this.getItem();
+        this.chocolateApple = (SlimefunItemStack) this.getItem();
     }
 
-    public SlimefunItemStack getSlimeCake() {
-        return slimeCake;
+    public SlimefunItemStack getChocolateApple() {
+        return chocolateApple;
     }
 
     @Override
