@@ -4,8 +4,10 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import me.gamingoninsulin.slimefood.managers.SFItemManager;
 import me.gamingoninsulin.slimefood.managers.SFRecipeManager;
 import me.gamingoninsulin.slimefood.managers.SFResearchManager;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -14,6 +16,7 @@ import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 
 public class SlimeFoodPlugin extends JavaPlugin implements SlimefunAddon {
+
     @Override
     public void onEnable() {
 
@@ -27,7 +30,8 @@ public class SlimeFoodPlugin extends JavaPlugin implements SlimefunAddon {
         SFResearchManager researchManager = new SFResearchManager();
         this.registerManager(researchManager);
 
-
+//        SFBrickOven sfBrickOven = new SFBrickOven(this);
+//        Bukkit.getPluginManager().registerEvents((Listener) sfBrickOven, this);
 
         // Register the SFSlimyCake item
         System.out.println("Before registering SFSlimyCake");
@@ -41,6 +45,22 @@ public class SlimeFoodPlugin extends JavaPlugin implements SlimefunAddon {
 
         // Read something from your config.yml
         Config cfg = new Config(this);
+
+        // Get the name of your plugin
+        String name = cfg.getString("name");
+        // Get the version of your plugin
+        String version = cfg.getString("version");
+        // Get the author of your plugin
+        String author = cfg.getString("author");
+        // Get the description of your plugin
+        String description = cfg.getString("description");
+        // Get the website of your plugin
+        String website = cfg.getString("website");
+
+        // Print some information to the console
+        getLogger().info("Loading " + name + " v" + version + " by " + author);
+        getLogger().info(description);
+        getLogger().info("Visit " + website + " for more information.");
 
         if (cfg.getBoolean("options.auto-update")) {
             // You could start an Auto-Updater for example

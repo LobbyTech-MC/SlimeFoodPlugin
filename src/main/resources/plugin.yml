@@ -11,7 +11,7 @@ description: A generic Slimefun Addon that aims to add new kinds of food.
 main: me.gamingoninsulin.slimefood.SlimeFoodPlugin
 
 ## You can change this to link to your website or repository. You can also remove this line if you want to.
-website: https://github.com/GamingOnInsulin/SlimeFoodPlugin
+website: https://github.com/gamingoninsulin/SlimeFoodPlugin
 
 ## This value is automatically replaced by the version specified in your pom.xml file.
 ## Do not change this.
