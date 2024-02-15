@@ -32,11 +32,11 @@ public class SFBrickOven extends MultiBlockMachine implements RecipeDisplayItem 
         return List.of(recipe);
     }
 
-    private static ItemStack[][] getMultiBlockPattern() {
-        return new ItemStack[][] {
-                { new ItemStack(Material.STONE_BRICKS), new ItemStack(Material.STONE_BRICKS), new ItemStack(Material.STONE_BRICKS) },
-                { new ItemStack(Material.STONE_BRICKS), new ItemStack(Material.STONE_BRICKS), new ItemStack(Material.STONE_BRICKS) },
-                { new ItemStack(Material.STONE_BRICKS), new ItemStack(Material.DISPENSER), new ItemStack(Material.STONE_BRICKS) }
+    private static ItemStack[] getMultiBlockPattern() {
+        return new ItemStack[]{
+                null, new ItemStack(Material.BRICK), null,
+                null, new ItemStack(Material.FIRE), null,
+                null, new ItemStack(Material.BRICK), null
         };
     }
 

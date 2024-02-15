@@ -9,8 +9,6 @@ import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import javax.management.loading.PrivateClassLoader;
-
 public class SFChocolateApple extends SlimefunItem {
     private final SlimefunItemStack chocolateApple;
 
