@@ -1,0 +1,146 @@
+package me.gamingoninsulin.slimefood.multiblocks;
+
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+
+import io.github.thebusybiscuit.slimefun4.api.events.PlayerRightClickEvent;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
+import me.gamingoninsulin.slimefood.SlimeFoodPlugin;
+import me.gamingoninsulin.slimefood.food.SFChocolateApple;
+import me.gamingoninsulin.slimefood.food.SFSlimyCake;
+import me.gamingoninsulin.slimefood.managers.SFItemManager;
+import me.gamingoninsulin.slimefood.managers.SFRecipeManager;
+import me.mrCookieSlime.Slimefun.Lists.RecipeType;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+
+public class SFBrickOven extends MultiBlockMachine {
+
+    public SFBrickOven(SlimeFoodPlugin plugin) {
+        super(plugin, SFItemManager.BRICK_OVEN, new ItemStack[] {
+                new ItemStack(Material.STONE_BRICKS), new ItemStack(Material.STONE_BRICKS), new ItemStack(Material.STONE_BRICKS),
+                new ItemStack(Material.STONE_BRICKS), new ItemStack(Material.STONE_BRICKS), new ItemStack(Material.STONE_BRICKS),
+                new ItemStack(Material.STONE_BRICKS), new ItemStack(Material.DISPENSER), new ItemStack(Material.STONE_BRICKS)
+        }, BlockFace.SELF);
+    }
+
+    @Override
+    public void onInteract(PlayerRightClickEvent e) {
+        Block b = e.getClickedBlock().getRelative(BlockFace.UP);
+        Player p = e.getPlayer();
+
+        if (b.getType() == Material.DISPENSER) {
+            ItemStack input = p.getInventory().getItemInMainHand();
+
+            if (input != null && input.getType() != Material.AIR) {
+                SlimefunItem sfItem = SlimefunItem.getByItem(input);
+
+                if (sfItem != null && sfItem instanceof SFSlimyCake) {
+                    // Check if the player has unlocked the slimy cake research
+                    if (!hasUnlocked(p, sfItem, true)) {
+                        return;
+                    }
+
+                    // Check if the dispenser has enough fuel
+                    if (!isDispenserFueled(b)) {
+                        SlimefunPlugin.getLocalization().sendMessage(p, "machines.ignition-chamber-no-flint", true);
+                        return;
+                    }
+
+                    // Consume the input and the fuel
+                    p.getInventory().setItemInMainHand(null);
+                    consumeDispenserFuel(b);
+
+                    // Start the cooking process
+                    SlimefunPlugin.getLocalization().sendMessage(p, "machines.brick-oven-started", true);
+                    startCooking(b, input, SFItemManager.SLIMY_CAKE);
+                }
+                else if (sfItem != null && sfItem instanceof SFChocolateApple) {
+                    // Check if the player has unlocked the chocolate apple research
+                    if (!hasUnlocked(p, sfItem, true)) {
+                        return;
+                    }
+
+                    // Check if the dispenser has enough fuel
+                    if (!isDispenserFueled(b)) {
+                        SlimefunPlugin.getLocalization().sendMessage(p, "machines.ignition-chamber-no-flint", true);
+                        return;
+                    }
+
+                    // Consume the input and the fuel
+                    p.getInventory().setItemInMainHand(null);
+                    consumeDispenserFuel(b);
+
+                    // Start the cooking process
+                    SlimefunPlugin.getLocalization().sendMessage(p, "machines.brick-oven-started", true);
+                    startCooking(b, input, SFItemManager.CHOCOLATE_APPLE);
+                }
+                else {
+                    SlimefunPlugin.getLocalization().sendMessage(p, "machines.wrong-item", true);
+                }
+            }
+        }
+    }
+
+    private boolean isDispenserFueled(Block dispenser) {
+        // Check if the dispenser has a flint and steel as fuel
+        for (int slot = 0; slot < 9; slot++) {
+            ItemStack item = dispenser.getInventory().getItem(slot);
+
+            if (item != null && item.getType() == Material.FLINT_AND_STEEL) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void consumeDispenserFuel(Block dispenser) {
+        // Consume one durability point from the flint and steel
+        for (int slot = 0; slot < 9; slot++) {
+            ItemStack item = dispenser.getInventory().getItem(slot);
+
+            if (item != null && item.getType() == Material.FLINT_AND_STEEL) {
+                if (item.getDurability() >= item.getType().getMaxDurability()) {
+                    dispenser.getInventory().setItem(slot, null);
+                }
+                else {
+                    item.setDurability((short) (item.getDurability() + 1));
+                }
+
+                break;
+            }
+        }
+    }
+
+    private void startCooking(Block dispenser, ItemStack input, SlimefunItemStack output) {
+        // Set the dispenser to face downwards
+        dispenser.setData((byte) 0x0);
+
+        // Drop the input item from the dispenser
+        dispenser.getWorld().dropItem(dispenser.getLocation(), input);
+
+        // Schedule a task to finish the cooking process after 4 seconds
+        SlimefunPlugin.runSync(() -> finishCooking(dispenser, output), 80L);
+    }
+
+    private void finishCooking(Block dispenser, SlimefunItemStack output) {
+        // Set the dispenser to face self
+        dispenser.setData((byte) 0x8);
+
+        // Remove the input item from the ground
+        dispenser.getWorld().getNearbyEntities(dispenser.getLocation(), 0.5, 0.5, 0.5).forEach(entity -> {
+            if (entity instanceof Item) {
+                entity.remove();
+            }
+        });
+
+        // Drop the output item from the dispenser
+        dispenser.getWorld().dropItem(dispenser.getLocation(), output.clone());
+    }
+}
