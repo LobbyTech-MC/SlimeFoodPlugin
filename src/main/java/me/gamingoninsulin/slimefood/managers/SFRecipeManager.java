@@ -3,9 +3,12 @@ package me.gamingoninsulin.slimefood.managers;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import me.gamingoninsulin.slimefood.SlimeFoodPlugin;
 import me.gamingoninsulin.slimefood.food.SFChocolateApple;
 import me.gamingoninsulin.slimefood.food.SFSlimyCake;
+import me.gamingoninsulin.slimefood.multiblocks.SFBrickOven;
 import org.bukkit.Material;
+import org.bukkit.block.BlockFace;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Objects;
@@ -15,7 +18,7 @@ public class SFRecipeManager {
     private final SFItemManager itemManager;
 
 
-    public SFRecipeManager(ItemGroup itemGroup, SFItemManager itemManager) {
+    public SFRecipeManager(ItemGroup itemGroup, SFItemManager itemManager, SlimeFoodPlugin slimeFoodPlugin) {
         this.itemGroup = itemGroup;
         this.itemManager = itemManager;
     }
@@ -53,5 +56,19 @@ public class SFRecipeManager {
         // Register the slimy cake item
         itemManager.createAndRegisterItem(chocolateApple.getItemId(), chocolateApple.getType(), Objects.requireNonNull(chocolateApple.getItemMeta()).getDisplayName(),
                 RecipeType.ENHANCED_CRAFTING_TABLE, recipe, "&7&oRestores &b&o" + "6.0" + " &7&oHunger");
+    }
+
+    public void registerSFBrickOven(SFBrickOven sfBrickOven) {
+        // Define the recipe items
+        ItemStack[] recipe = new ItemStack[]{
+                new ItemStack(Material.APPLE), new ItemStack(Material.SUGAR), null,
+                null, null, null,
+                null, null, null
+        };
+
+        // Create and register SFBrickOven
+        SlimefunItemStack sfBrickOvenItem = itemManager.createSFBrickOven();
+        SFBrickOven sfBrickOvenInstance = new SFBrickOven(itemGroup, sfBrickOvenItem, SFBrickOven.getMultiBlockPattern(), recipe, BlockFace.SELF);
+        itemManager.registerSFBrickOven(sfBrickOvenInstance);
     }
 }

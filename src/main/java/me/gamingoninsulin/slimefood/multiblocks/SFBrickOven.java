@@ -1,10 +1,12 @@
 package me.gamingoninsulin.slimefood.multiblocks;
 
+import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
 import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
 
+import me.gamingoninsulin.slimefood.SlimeFoodPlugin;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -18,10 +20,11 @@ import java.util.List;
 
 public class SFBrickOven extends MultiBlockMachine implements RecipeDisplayItem {
 
+    private final SlimeFoodPlugin plugin = null;
     private final ItemStack[] recipe;
 
-    public SFBrickOven(ItemGroup itemGroup, SlimefunItemStack item, ItemStack[] multiblock, ItemStack[] recipe) {
-        super(itemGroup, item, multiblock, recipe, BlockFace.NORTH);
+    public SFBrickOven(ItemGroup itemGroup, SlimefunItemStack item, ItemStack[] multiblock, ItemStack[] recipe, BlockFace self) {
+        super(itemGroup, item, multiblock, recipe, BlockFace.SELF);
         this.recipe = recipe;
     }
 
@@ -30,11 +33,11 @@ public class SFBrickOven extends MultiBlockMachine implements RecipeDisplayItem 
         return List.of(recipe);
     }
 
-    private static ItemStack[] getMultiBlockPattern() {
+    public static ItemStack[] getMultiBlockPattern() {
         return new ItemStack[]{
-                null, new ItemStack(Material.BRICK), null,
-                null, new ItemStack(Material.FIRE), null,
-                null, new ItemStack(Material.BRICK), null
+                new ItemStack(Material.STONE_BRICKS), new ItemStack(Material.STONE_BRICKS), new ItemStack(Material.STONE_BRICKS),
+                new ItemStack(Material.STONE_BRICKS), new ItemStack(Material.DISPENSER), new ItemStack(Material.STONE_BRICKS),
+                new ItemStack(Material.STONE_BRICKS), new ItemStack(Material.STONE_BRICKS), new ItemStack(Material.STONE_BRICKS)
         };
     }
 
@@ -69,5 +72,10 @@ public class SFBrickOven extends MultiBlockMachine implements RecipeDisplayItem 
         p.sendMessage(ChatColor.GREEN + "The oven successfully cooked the recipe!");
     }
 
+    public void registerSFBrickOven(SFBrickOven sfBrickOven) {
+        // Register the SFBrickOven
+        sfBrickOven.register(this.plugin);
+
+    }
     SlimefunItemStack item = new SlimefunItemStack("SF_BRICK_OVEN", Material.BRICK, "Brick Oven", "...");
 }

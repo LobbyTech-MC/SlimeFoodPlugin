@@ -19,7 +19,8 @@ public class SFResearchManager {
 
     // Incorporating SFSlimyCake and SFCocolateApple
     public SFResearchManager() {
-        setUnlockLevel("SFSlimyCake", 4); // Set the unlock level for SFSlimyCake to 4
-        setUnlockLevel("SFCocolateApple", 4); // Set the unlock level for SFCocolateApple to 4
+        setUnlockLevel("SFSlimyCake", 5); // Set the unlock level for SFSlimyCake to 4
+        setUnlockLevel("SFCocolateApple", 5); // Set the unlock level for SFCocolateApple to 4
+        setUnlockLevel("SFBrickOven", 25); // Set the unlock level for SFBrickOven to 4
     }
 }

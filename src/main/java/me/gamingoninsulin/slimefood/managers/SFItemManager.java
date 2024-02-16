@@ -5,6 +5,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import me.gamingoninsulin.slimefood.multiblocks.SFBrickOven;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -26,6 +27,9 @@ public class SFItemManager {
     public SlimefunItemStack createSFBrickOven() {
         // Create your SFBrickOven item here
         return new SlimefunItemStack("SF_BRICK_OVEN", Material.BRICK, "Brick Oven", "...");
+    }
+    public void registerSFBrickOven(SFBrickOven sfBrickOven) {
+        sfBrickOven.register(this.addon);
     }
 
     void registerItem(SlimefunItem item) {
