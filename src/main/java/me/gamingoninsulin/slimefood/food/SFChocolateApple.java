@@ -17,9 +17,9 @@ public class SFChocolateApple extends SlimefunItem {
                 new SlimefunItemStack(
                         "CHOCOLATE_APPLE", // This is the ID for your item
                         Material.APPLE, // This is the material for your item
-                        "&6Chocolate Apple", // This is the name of your item
+                        "&6巧克力苹果", // This is the name of your item
                         "", // This is the lore of your item
-                        "&7&oRestores &b&o" + "8.0" + " &7&oHunger" // This is additional lore of your item
+                        "&7&o恢复 &b&o" + "8.0" + " &7&o饥饿值" // This is additional lore of your item
                 ),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
