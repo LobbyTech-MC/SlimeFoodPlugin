@@ -5,13 +5,13 @@ name: SlimeFood
 author: gamingOnInsulin
 
 ## CHANGE this to a meaninful but short description of your plugin.
-description: A generic Slimefun Addon that aims to add new kinds of food.
+description: 一个普通的Slimefun插件，旨在添加新的食物种类。
 
 ## CHANGE this to the path of the class that extends JavaPlugin.
 main: me.gamingoninsulin.slimefood.SlimeFoodPlugin
 
 ## You can change this to link to your website or repository. You can also remove this line if you want to.
-website: https://github.com/gamingoninsulin/SlimeFoodPlugin
+website: https://github.com/SlimefunGuguProject/SlimeFoodPlugin
 
 ## This value is automatically replaced by the version specified in your pom.xml file.
 ## Do not change this.
