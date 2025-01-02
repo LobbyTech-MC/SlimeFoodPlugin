@@ -26,7 +26,7 @@ public class SFItemManager {
 
     public SlimefunItemStack createSFBrickOven() {
         // Create your SFBrickOven item here
-        return new SlimefunItemStack("SF_BRICK_OVEN", Material.BRICK, "Brick Oven", "...");
+        return new SlimefunItemStack("SF_BRICK_OVEN", Material.BRICK, "砖炉", "...");
     }
     public void registerSFBrickOven(SFBrickOven sfBrickOven) {
         sfBrickOven.register(this.addon);
