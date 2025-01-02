@@ -35,7 +35,7 @@ public class SFRecipeManager {
 
         // Register the slimy cake item
         itemManager.createAndRegisterItem(slimeCake.getItemId(), slimeCake.getType(), Objects.requireNonNull(slimeCake.getItemMeta()).getDisplayName(),
-                RecipeType.ENHANCED_CRAFTING_TABLE, recipe, "&7&oRestores &b&o" + "6.0" + " &7&oHunger");
+                RecipeType.ENHANCED_CRAFTING_TABLE, recipe, "&7&o恢复 &b&o" + "6.0" + " &7&o饥饿值");
     }
 
     public ItemStack[] getSFBrickOvenRecipe() {
@@ -55,7 +55,7 @@ public class SFRecipeManager {
 
         // Register the slimy cake item
         itemManager.createAndRegisterItem(chocolateApple.getItemId(), chocolateApple.getType(), Objects.requireNonNull(chocolateApple.getItemMeta()).getDisplayName(),
-                RecipeType.ENHANCED_CRAFTING_TABLE, recipe, "&7&oRestores &b&o" + "6.0" + " &7&oHunger");
+                RecipeType.ENHANCED_CRAFTING_TABLE, recipe, "&7&o恢复 &b&o" + "6.0" + " &7&o饥饿值");
     }
 
     public void registerSFBrickOven(SFBrickOven sfBrickOven) {
