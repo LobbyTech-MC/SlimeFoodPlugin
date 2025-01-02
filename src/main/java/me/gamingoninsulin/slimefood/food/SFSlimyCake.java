@@ -18,9 +18,9 @@ public class SFSlimyCake extends SlimefunItem {
                 new SlimefunItemStack(
                         "SLIME_CAKE", // This is the ID for your item
                         Material.CAKE, // This is the material for your item
-                        "&aSlime Cake", // This is the name of your item
+                        "&a粘液蛋糕", // This is the name of your item
                         "", // This is the lore of your item
-                        "&7&oRestores &b&o" + "6.0" + " &7&oHunger" // This is additional lore of your item
+                        "&7&o恢复 &b&o" + "6.0" + " &7&o饥饿值" // This is additional lore of your item
                 ),
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[] {
