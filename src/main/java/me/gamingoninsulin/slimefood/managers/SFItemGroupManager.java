@@ -15,7 +15,7 @@ public class SFItemGroupManager {
     private final ItemGroup itemGroup;
 
     public SFItemGroupManager(JavaPlugin plugin) {
-        ItemStack itemGroupItem = new CustomItemStack(Material.CAKE, "&2SlimeFood", "", "&a> Click to open");
+        ItemStack itemGroupItem = new CustomItemStack(Material.CAKE, "&2粘液美食", "", "&a> 单击打开");
         NamespacedKey itemGroupId = new NamespacedKey(plugin, "sf_slime_food_plugin");
         this.itemGroup = new ItemGroup(itemGroupId, itemGroupItem);
     }
