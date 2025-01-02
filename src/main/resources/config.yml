@@ -2,8 +2,8 @@
 name: SlimeFood
 version: 0.2
 author: GamingOnInsulin
-description: A generic Slimefun Addon that aims to add new kinds of food.
-website: https://github.com/gamingoninsulin/SlimeFoodPlugin
+description: 一个普通的Slimefun插件，旨在添加新的食物种类。
+website: https://github.com/SlimefunGuguProject/SlimeFoodPlugin
 
 # Plugin Options #
 options:

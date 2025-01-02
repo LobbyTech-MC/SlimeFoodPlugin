@@ -56,7 +56,7 @@ public class SFBrickOven extends MultiBlockMachine implements RecipeDisplayItem 
         // Check if the dispenser has the required items for the recipe
         for (ItemStack item : recipe) {
             if (!inv.containsAtLeast(item, item.getAmount())) {
-                p.sendMessage(ChatColor.RED + "The oven is missing some ingredients!");
+                p.sendMessage(ChatColor.RED + "砖炉缺少材料!");
                 return;
             }
         }
@@ -69,7 +69,7 @@ public class SFBrickOven extends MultiBlockMachine implements RecipeDisplayItem 
         // Add the result of the recipe to the dispenser's inventory
         inv.addItem(getRecipeOutput());
 
-        p.sendMessage(ChatColor.GREEN + "The oven successfully cooked the recipe!");
+        p.sendMessage(ChatColor.GREEN + "砖炉成功烹饪美食!");
     }
 
     public void registerSFBrickOven(SFBrickOven sfBrickOven) {
@@ -77,5 +77,5 @@ public class SFBrickOven extends MultiBlockMachine implements RecipeDisplayItem 
         sfBrickOven.register(this.plugin);
 
     }
-    SlimefunItemStack item = new SlimefunItemStack("SF_BRICK_OVEN", Material.BRICK, "Brick Oven", "...");
+    SlimefunItemStack item = new SlimefunItemStack("SF_BRICK_OVEN", Material.BRICK, "砖炉", "...");
 }
