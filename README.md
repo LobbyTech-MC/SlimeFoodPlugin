@@ -1,2 +1,3 @@
-# SlimeFoodPlugin
- A generic Slimefun Addon that aims to add new kinds of food.
+# 粘液美食 
+
+ 添加了一些粘液食品
