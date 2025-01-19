@@ -77,5 +77,4 @@ public class SFBrickOven extends MultiBlockMachine implements RecipeDisplayItem 
         sfBrickOven.register(this.plugin);
 
     }
-    SlimefunItemStack item = new SlimefunItemStack("SF_BRICK_OVEN", Material.BRICK, "砖炉", "...");
 }
