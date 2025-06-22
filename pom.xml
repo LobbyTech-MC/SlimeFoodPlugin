@@ -8,6 +8,7 @@
     <version>0.2</version>
 
     <properties>
+        <Slimefun4-systemPath>C:\Users\11877\Documents\GitHub\SlimeFoodPlugin\libs\Slimefun.jar</Slimefun4-systemPath>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -31,7 +32,7 @@
     </repositories>
 
     <build>
-        <finalName>${project.name} v${project.version}</finalName>
+        <finalName>[sf]${project.name} v${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -67,8 +68,9 @@
         <dependency>
             <groupId>com.github.SlimefunGuguProject</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>2024.3.1</version>
-            <scope>provided</scope>
+            <version>2025.1</version>
+            <scope>system</scope>
+            <systemPath>${Slimefun4-systemPath}</systemPath>
             <exclusions>
                 <exclusion>
                     <groupId>io.github.baked-libs</groupId>

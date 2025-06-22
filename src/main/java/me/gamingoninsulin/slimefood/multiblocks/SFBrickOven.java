@@ -1,12 +1,7 @@
 package me.gamingoninsulin.slimefood.multiblocks;
 
-import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
-import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
-import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
+import java.util.List;
 
-import me.gamingoninsulin.slimefood.SlimeFoodPlugin;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -16,10 +11,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.List;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.core.attributes.RecipeDisplayItem;
+import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
+import me.gamingoninsulin.slimefood.SlimeFoodPlugin;
 
 public class SFBrickOven extends MultiBlockMachine implements RecipeDisplayItem {
 
+	
+	
     private final SlimeFoodPlugin plugin = null;
     private final ItemStack[] recipe;
 
@@ -77,4 +78,6 @@ public class SFBrickOven extends MultiBlockMachine implements RecipeDisplayItem 
         sfBrickOven.register(this.plugin);
 
     }
+    
+    public SlimefunItemStack SF_BRICK_OVEN = new SlimefunItemStack("SF_BRICK_OVEN", Material.BRICK, "砖炉", "...");
 }

@@ -1,15 +1,16 @@
 package me.gamingoninsulin.slimefood.managers;
 
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
-import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
-import me.gamingoninsulin.slimefood.food.SFChocolateApple;
-import me.gamingoninsulin.slimefood.food.SFSlimyCake;
-import me.gamingoninsulin.slimefood.multiblocks.SFBrickOven;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import me.gamingoninsulin.slimefood.food.SFChocolateApple;
+import me.gamingoninsulin.slimefood.food.SFSlimyCake;
+import me.gamingoninsulin.slimefood.multiblocks.SFBrickOven;
 
 public class SFItemGroupManager {
     private final ItemGroup itemGroup;

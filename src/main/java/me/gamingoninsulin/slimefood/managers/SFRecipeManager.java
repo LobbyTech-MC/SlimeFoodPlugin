@@ -1,5 +1,11 @@
 package me.gamingoninsulin.slimefood.managers;
 
+import java.util.Objects;
+
+import org.bukkit.Material;
+import org.bukkit.block.BlockFace;
+import org.bukkit.inventory.ItemStack;
+
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -7,11 +13,6 @@ import me.gamingoninsulin.slimefood.SlimeFoodPlugin;
 import me.gamingoninsulin.slimefood.food.SFChocolateApple;
 import me.gamingoninsulin.slimefood.food.SFSlimyCake;
 import me.gamingoninsulin.slimefood.multiblocks.SFBrickOven;
-import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
-import org.bukkit.inventory.ItemStack;
-
-import java.util.Objects;
 
 public class SFRecipeManager {
     private final ItemGroup itemGroup;
@@ -58,6 +59,7 @@ public class SFRecipeManager {
                 RecipeType.ENHANCED_CRAFTING_TABLE, recipe, "&7&o恢复 &b&o" + "6.0" + " &7&o饥饿值");
     }
 
+    
     public void registerSFBrickOven(SFBrickOven sfBrickOven) {
         // Define the recipe items
         ItemStack[] recipe = new ItemStack[]{
@@ -71,4 +73,5 @@ public class SFRecipeManager {
         SFBrickOven sfBrickOvenInstance = new SFBrickOven(itemGroup, sfBrickOvenItem, SFBrickOven.getMultiBlockPattern(), recipe, BlockFace.SELF);
         itemManager.registerSFBrickOven(sfBrickOvenInstance);
     }
+    
 }
