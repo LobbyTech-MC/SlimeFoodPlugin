@@ -69,7 +69,7 @@ public class SFRecipeManager {
         };
 
         // Create and register SFBrickOven
-        SlimefunItemStack sfBrickOvenItem = itemManager.createSFBrickOven();
+        SlimefunItemStack sfBrickOvenItem = SFBrickOven.SF_BRICK_OVEN;
         SFBrickOven sfBrickOvenInstance = new SFBrickOven(itemGroup, sfBrickOvenItem, SFBrickOven.getMultiBlockPattern(), recipe, BlockFace.SELF);
         itemManager.registerSFBrickOven(sfBrickOvenInstance);
     }
