@@ -60,18 +60,4 @@ public class SFRecipeManager {
     }
 
     
-    public void registerSFBrickOven(SFBrickOven sfBrickOven) {
-        // Define the recipe items
-        ItemStack[] recipe = new ItemStack[]{
-                new ItemStack(Material.APPLE), new ItemStack(Material.SUGAR), null,
-                null, null, null,
-                null, null, null
-        };
-
-        // Create and register SFBrickOven
-        SlimefunItemStack sfBrickOvenItem = SFBrickOven.SF_BRICK_OVEN;
-        SFBrickOven sfBrickOvenInstance = new SFBrickOven(itemGroup, sfBrickOvenItem, SFBrickOven.getMultiBlockPattern(), recipe, BlockFace.SELF);
-        itemManager.registerSFBrickOven(sfBrickOvenInstance);
-    }
-    
 }
