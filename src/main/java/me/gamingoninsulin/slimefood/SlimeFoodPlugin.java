@@ -42,7 +42,7 @@ public class SlimeFoodPlugin extends JavaPlugin implements SlimefunAddon {
         ItemStack[] multiblock = SFBrickOven.getMultiBlockPattern(); // Use the method from SFBrickOven class
         ItemStack[] recipe = new ItemStack[]{new ItemStack(Material.APPLE), new ItemStack(Material.SUGAR), null, null, null, null, null, null, null};
         sfBrickOven = new SFBrickOven(itemGroup, sfBrickOvenItem, multiblock, recipe, BlockFace.SELF);
-        itemManager.registerSFBrickOven(sfBrickOven);
+        //itemManager.registerSFBrickOven(sfBrickOven);
         itemGroupManager.addItem(sfBrickOven);
 
         getLogger().info("SlimeFood Multibiocks has been enabled!");

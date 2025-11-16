@@ -68,9 +68,8 @@
         <dependency>
             <groupId>com.github.SlimefunGuguProject</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>2025.1</version>
-            <scope>system</scope>
-            <systemPath>${Slimefun4-systemPath}</systemPath>
+            <version>master-SNAPSHOT</version>
+            <scope>provided</scope>
             <exclusions>
                 <exclusion>
                     <groupId>io.github.baked-libs</groupId>
